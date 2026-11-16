@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salvador Cuevas — Photographe et Réalisateur</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #faf9f7; color: #1a1a1a;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1.6; padding: 4rem 1.5rem; max-width: 1100px; margin: 0 auto;
+    }
+    h1 { font-size: 2rem; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; text-align: center; }
+    .sub { color: #777; font-size: 0.95rem; margin-bottom: 3rem; text-align: center; letter-spacing: 0.05em; }
+
+    #gate { max-width: 380px; margin: 0 auto; text-align: center; }
+    #gateForm { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+    #pwd { padding: 0.6rem 0.8rem; border: 1px solid #ccc; background: #fff; font-size: 0.95rem; border-radius: 2px; width: 180px; font-family: inherit; }
+    #gateForm button { padding: 0.6rem 1.2rem; background: #1a1a1a; color: #fff; border: none; cursor: pointer; border-radius: 2px; font-family: inherit; letter-spacing: 0.05em; }
+    .error { color: #b00020; font-size: 0.85rem; margin-top: 0.8rem; }
+    .hidden { display: none !important; }
+
+    .section-title {
+      font-size: 1.15rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 0.4rem; color: #1a1a1a;
+    }
+    .section-desc {
+      font-size: 0.9rem; color: #777; margin-bottom: 1.6rem; letter-spacing: 0.03em; font-style: italic;
+    }
+    section { margin-bottom: 4rem; }
+    .divider { border-top: 1px solid #ddd; margin: 3rem 0; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .photo-item {
+      position: relative; overflow: hidden; background: #eae7e2;
+      border-radius: 2px; aspect-ratio: 4/5;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .photo-item:hover img { transform: scale(1.02); }
+
+    .brief-form {
+      max-width: 620px; margin: 0 auto;
+      display: grid; gap: 1rem;
+    }
+    .brief-form label {
+      font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: #555;
+      display: block; margin-bottom: 0.3rem;
+    }
+    .brief-form input[type="text"],
+    .brief-form input[type="email"],
+    .brief-form textarea,
+    .brief-form input[type="file"] {
+      width: 100%; padding: 0.7rem 0.9rem; border: 1px solid #ccc;
+      background: #fff; font-size: 0.95rem; border-radius: 2px; font-family: inherit;
+      color: #1a1a1a;
+    }
+    .brief-form textarea { min-height: 130px; resize: vertical; }
+    .brief-form input:focus, .brief-form textarea:focus { outline: none; border-color: #1a1a1a; }
+    .brief-form button {
+      padding: 0.9rem 1.6rem; background: #1a1a1a; color: #fff; border: none;
+      letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.85rem;
+      cursor: pointer; border-radius: 2px; font-family: inherit; transition: opacity 0.2s;
+      justify-self: start;
+    }
+    .brief-form button:hover { opacity: 0.8; }
+    .file-note { font-size: 0.75rem; color: #999; margin-top: 0.3rem; }
+
+    .closing { text-align: center; padding: 3rem 1rem 1rem; border-top: 1px solid #ddd; }
+    .closing p { font-size: 0.9rem; color: #777; margin-bottom: 1.4rem; letter-spacing: 0.04em; }
+    .close-btn {
+      display: inline-block; padding: 0.9rem 2.2rem;
+      background: transparent; color: #1a1a1a; border: 1px solid #1a1a1a;
+      text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase;
+      font-size: 0.85rem; border-radius: 2px; transition: background 0.2s, color 0.2s;
+    }
+    .close-btn:hover { background: #1a1a1a; color: #fff; }
+
+    a.back { display: block; text-align: center; margin-top: 2rem; color: #777; font-size: 0.9rem; text-decoration: none; }
+    a.back:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      body { padding: 2.5rem 1rem; }
+      h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Espace client</h1>
+  <p class="sub">Salvador Cuevas — Photographe et Réalisateur</p>
+
+  <div id="gate">
+    <form id="gateForm" autocomplete="off">
+      <input type="password" id="pwd" placeholder="Mot de passe" required>
+      <button type="submit">Entrer</button>
+    </form>
+    <p id="gateError" class="error hidden">Mot de passe incorrect.</p>
+  </div>
+
+  <div id="content" class="hidden">
+
+    <section>
+      <h2 class="section-title">Sélection éditoriale</h2>
+      <p class="section-desc">Une sélection de visuels pour cadrer la direction artistique.</p>
+
+      <div class="gallery">
+        <div class="photo-item"><img src="1.jpg" alt="Visuel 1"></div>
+        <div class="photo-item"><img src="2.jpg" alt="Visuel 2"></div>
+        <div class="photo-item"><img src="3.jpg" alt="Visuel 3"></div>
+        <div class="photo-item"><img src="4.jpg" alt="Visuel 4"></div>
+        <div class="photo-item"><img src="5.jpg" alt="Visuel 5"></div>
+        <div class="photo-item"><img src="6.jpg" alt="Visuel 6"></div>
+        <div class="photo-item"><img src="7.jpg" alt="Visuel 7"></div>
+        <div class="photo-item"><img src="8.jpg" alt="Visuel 8"></div>
+        <div class="photo-item"><img src="9.jpg" alt="Visuel 9"></div>
+        <div class="photo-item"><img src="10.jpg" alt="Visuel 10"></div>
+        <div class="photo-item"><img src="11.jpg" alt="Visuel 11"></div>
+        <div class="photo-item"><img src="12.jpg" alt="Visuel 12"></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2 class="section-title">Brief créatif &amp; moodboard</h2>
+      <p class="section-desc">Partagez vos retours, votre brief ou vos références visuelles.</p>
+
+      <form
+        name="brief-client"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        enctype="multipart/form-data"
+        action="merci.html"
+        class="brief-form">
+
+        <input type="hidden" name="form-name" value="brief-client">
+        <p hidden><label>Ne pas remplir : <input name="bot-field"></label></p>
+
+        <div>
+          <label for="name">Nom / Marque</label>
+          <input type="text" id="name" name="name" placeholder="Votre nom ou marque" required>
+        </div>
+
+        <div>
+          <label for="email">Email de contact</label>
+          <input type="email" id="email" name="email" placeholder="vous@exemple.com" required>
+        </div>
+
+        <div>
+          <label for="message">Message / brief créatif</label>
+          <textarea id="message" name="message" placeholder="Décrivez votre direction artistique, vos références, vos attentes…" required></textarea>
+        </div>
+
+        <div>
+          <label for="fichier_1">Pièce jointe 1</label>
+          <input type="file" id="fichier_1" name="fichier_1" accept="image/*,.pdf,.doc,.docx,.zip">
+        </div>
+
+        <div>
+          <label for="fichier_2">Pièce jointe 2</label>
+          <input type="file" id="fichier_2" name="fichier_2" accept="image/*,.pdf,.doc,.docx,.zip">
+        </div>
+
+        <div>
+          <label for="fichier_3">Pièce jointe 3</label>
+          <input type="file" id="fichier_3" name="fichier_3" accept="image/*,.pdf,.doc,.docx,.zip">
+          <p class="file-note">Formats acceptés : images, PDF, DOC, ZIP. 10 Mo max. au total par envoi.</p>
+        </div>
+
+        <button type="submit">Envoyer le brief</button>
+      </form>
+    </section>
+
+    <div class="closing">
+      <p>Session terminée ? Clôturez l’espace et revenez quand vous voulez.</p>
+      <a href="merci.html" class="close-btn">Clôturer la session</a>
+    </div>
+
+    <a class="back" href="../">← Retour à l’accueil</a>
+  </div>
+
+  <script>
+    (function () {
+      var PASSWORD = 'look4love';
+      var gate = document.getElementById('gate');
+      var content = document.getElementById('content');
+      var form = document.getElementById('gateForm');
+      var pwd = document.getElementById('pwd');
+      var error = document.getElementById('gateError');
+
+      function showContent() {
+        gate.classList.add('hidden');
+        content.classList.remove('hidden');
+      }
+
+      try {
+        if (sessionStorage.getItem('clientAccess') === 'ok') showContent();
+      } catch (e) {}
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (pwd.value.trim() === PASSWORD) {
+          try { sessionStorage.setItem('clientAccess', 'ok'); } catch (e) {}
+          showContent();
+        } else {
+          error.classList.remove('hidden');
+          pwd.value = '';
+          pwd.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
